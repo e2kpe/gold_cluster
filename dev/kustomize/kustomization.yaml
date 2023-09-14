@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - tanzu-packages-cert-manager.yaml
 - psp.yaml
+- helm-ingress-nginx.yaml
 #- tanzu-packages-contour.yaml
 - tanzu-packages-fluent-bit.yaml
 #- tanzu-packages-grafana.yaml
