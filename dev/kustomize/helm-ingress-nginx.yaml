@@ -14,7 +14,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: base-packages
-    namespace: ingress-nginx
+    namespace: tanzu-continuousdelivery-resources
 #  healthChecks:
 #    - apiVersion: apps/v1
 #      kind: Deployment
