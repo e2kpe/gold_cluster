@@ -9,3 +9,5 @@ resources:
 #- tanzu-packages-package-repo.yaml
 #- tanzu-packages-grafana-sa.yaml
 #- tanzu-packages-efk-sa.yaml
+transformers:
+    - global-labels.yaml
