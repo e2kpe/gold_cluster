@@ -4,16 +4,16 @@ metadata:
   name: podinfo
   namespace: ingress-nginx
 spec:
+  interval: 1m
   chart:
     spec:
+      chart: ingress-nginx
       version: "4.0.18"
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: ingress-nginx
         namespace: tanzu-helm-resources
-  test:
-    enable: true
-
+      interval: 1m
   values:
     controller:
       name: controller
@@ -22,7 +22,6 @@ spec:
         image: docker/k8s.gcr.io/ingress-nginx/controller
         tag: "v1.1.2"
         digest: sha256:6a18680809f9bdf7bba4092cede2b5f3ee3566fb65c1bf4cfce328c5ee94bac7
-
       replicaCount: 3
     imagePullSecrets:
     - name: regcred
