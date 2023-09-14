@@ -8,4 +8,4 @@ resources:
 #- tanzu-packages-harbor.yaml
 #- tanzu-packages-prometheus.yaml
 transformers:
-    - global-labels.yaml
+    - ../global-labels.yaml
