@@ -1,8 +1,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: ingress-nginx
+  name: bitnami
   namespace: tanzu-helm-resources
 spec:
   interval: 1m
-  url: https://kubernetes.github.io/ingress-nginx
+#  url: https://kubernetes.github.io/ingress-nginx
+  url: https://charts.bitnami.com/bitnami 
