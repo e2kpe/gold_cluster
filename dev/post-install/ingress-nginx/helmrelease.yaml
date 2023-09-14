@@ -10,14 +10,14 @@ spec:
     enable: true
   values:
     controller:
-    name: controller
+      name: controller
       image:
-      registry: artifactory.dev.e2open.com
-      image: docker/k8s.gcr.io/ingress-nginx/controller
-      tag: "v1.1.2"
-      digest: sha256:6a18680809f9bdf7bba4092cede2b5f3ee3566fb65c1bf4cfce328c5ee94bac7
+        registry: artifactory.dev.e2open.com
+        image: docker/k8s.gcr.io/ingress-nginx/controller
+        tag: "v1.1.2"
+        digest: sha256:6a18680809f9bdf7bba4092cede2b5f3ee3566fb65c1bf4cfce328c5ee94bac7
 
-     replicaCount: 3
+      replicaCount: 3
     imagePullSecrets:
     - name: regcred
 
