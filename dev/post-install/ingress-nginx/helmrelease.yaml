@@ -10,7 +10,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
-        namespace: ingress-nginx
+        namespace: tanzu-helm-resources
   test:
     enable: true
 
