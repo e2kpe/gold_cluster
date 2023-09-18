@@ -15,9 +15,9 @@ spec:
     kind: GitRepository
     name: base-packages
     namespace: tanzu-continuousdelivery-resources
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Daemonset
-      name: fluent-bit
-      namespace: monitor-logging
+#  healthChecks:
+#    - apiVersion: apps/v1
+#      kind: Daemonset
+#      name: fluent-bit
+#      namespace: monitor-logging
 
