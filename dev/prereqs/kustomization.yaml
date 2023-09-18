@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - tanzu-packages-namespaces.yaml
 - tanzu-packages-cert-manager-sa.yaml
+- cluster-name-secret.yaml
 #- tanzu-packages-contour-sa.yaml
 #- tanzu-packages-psp.yaml
 #- tanzu-packages-prometheus-sa.yaml
