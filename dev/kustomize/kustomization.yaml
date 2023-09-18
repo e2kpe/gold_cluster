@@ -6,6 +6,7 @@ resources:
 - helm-ingress-nginx.yaml
 #- tanzu-packages-contour.yaml
 - tanzu-packages-fluent-bit.yaml
+- tanzu-packages-vault.yaml
 #- tanzu-packages-grafana.yaml
 #- tanzu-packages-harbor.yaml
 #- tanzu-packages-prometheus.yaml
