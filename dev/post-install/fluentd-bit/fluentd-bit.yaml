@@ -44,7 +44,7 @@ namespace: "monitor-logging"
 fluent_bit:
   config:
     service: |
-      @SET cluster= ${cluster_name}
+      @SET cluster= cluster_name
       [Service]
         Flush         2
         Log_Level     warning
