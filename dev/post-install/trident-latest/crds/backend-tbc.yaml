@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-tbc-ontap-nas-advanced-secret
+type: Opaque
+stringData:
+  username: vsadmin
+  password: E2open123
+---
+apiVersion: trident.netapp.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: ontap-nas
+spec:
+  version: 1
+  storageDriverName: ontap-nas
+  managementLIF: 10.120.117.20
+  dataLIF: 10.120.127.253
+  backendName: ontap-nas
+  storagePrefix: demo-tkc 
+  svm: vserver_affdev_TRIDENT
+  credentials: 
+    name: backend-tbc-ontap-nas-advanced-secret
+  limitAggregateUsage: 80%
+  limitVolumeSize: 50Gi
+  nfsMountOptions: nfsvers=4
+  defaults:
+    spaceReserve: none
+    exportPolicy: "trident"
+    snapshotPolicy: "trident"
+    snapshotReserve: '10'
+  deletionPolicy: retain
