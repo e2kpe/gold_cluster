@@ -5,7 +5,7 @@ metadata:
   name: tanzu-packages-fluentd-bit
   namespace: tanzu-continuousdelivery-resources
 spec:
-  dependsOn:
+#  dependsOn:
 #    - name: tanzu-packages-cert-manager-sa
 #    - name: tanzu-packages-package-repo
   interval: 1m0s
