@@ -27,7 +27,7 @@ spec:
   packageRef:
     refName: fluentbit.tanzu.vmware.com
     versionSelection:
-      constraints: 1.9.5+vmware.1-tkg.2
+      constraints: 2.1.2+vmware.1-tkg.1
   values:
   - secretRef:
       name: fluentbit-data-values
