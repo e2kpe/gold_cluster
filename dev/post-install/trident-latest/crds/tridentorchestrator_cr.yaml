@@ -1,0 +1,12 @@
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  imagePullPolicy: IfNotPresent
+  imageRegistry:  artifactory.dev.e2open.com
+  autosupportImage: "artifactory.dev.e2open.com/dcops-docker-repo/trident-autosupport:23.07"
+  tridentImage: "artifactory.dev.e2open.com/dcops-docker-repo/trident:23.07.1"
+  windows: false
