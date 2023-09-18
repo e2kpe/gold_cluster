@@ -27,7 +27,7 @@ spec:
   packageRef:
     refName: fluentbit.tanzu.vmware.com
     versionSelection:
-      constraints: 2.1.2+vmware.1-tkg.1
+      constraints: ">1.7.5+vmware.1-tkg.1"
   values:
   - secretRef:
       name: fluentbit-data-values
@@ -39,7 +39,7 @@ metadata:
   namespace: packages
 stringData:
   values.yml: |
-    ---
+---
 namespace: "monitor-logging"
 fluent_bit:
   config:
