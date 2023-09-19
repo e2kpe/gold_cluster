@@ -6,14 +6,14 @@ resources:
 - clusterrolebinding.yaml
 - podsecuritypolicy_unprivileged.yaml
 - operator.yaml
-# - crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
-# - crds/tridentorchestrator_cr_autosupport.yaml
-# - crds/tridentorchestrator_cr_imagepullsecrets.yaml
-# - crds/trident.netapp.io_tridentorchestrators_crd.yaml
-# - crds/tridentorchestrator_cr_customimage.yaml
-# - crds/tridentorchestrator_cr.yaml
-# - crds/tridentorchestrator_cr_audit_log.yaml
-# - crds/tridentorchestrator_cr_default.yaml
+- crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
+- crds/tridentorchestrator_cr_autosupport.yaml
+- crds/tridentorchestrator_cr_imagepullsecrets.yaml
+- crds/trident.netapp.io_tridentorchestrators_crd.yaml
+- crds/tridentorchestrator_cr_customimage.yaml
+- crds/tridentorchestrator_cr.yaml
+- crds/tridentorchestrator_cr_audit_log.yaml
+- crds/tridentorchestrator_cr_default.yaml
 - crds/storage-class.yaml
 - crds/backend-tbc.yaml
 namespace: trident
