@@ -34,6 +34,8 @@ kind: PackageInstall
 metadata:
   name: fluent-bit
   namespace: packages
+  labels:
+    test: ${cluster_name}
 spec:
   packageRef:
     refName: fluent-bit.tanzu.vmware.com
