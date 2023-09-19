@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: trident-install 
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  interval: 1m0s
+  path: ./dev/post-install/trident-latest
+  prune: true
+  # patches:
+  #   - patch: |-
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: cluster-name-secret
+  sourceRef:
+    kind: GitRepository
+    name: base-packages
+    namespace: tanzu-continuousdelivery-resources
