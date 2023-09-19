@@ -45,7 +45,3 @@ spec:
   values:
   - secretRef:
       name: fluentbit-data-values
-  envFrom:
-  - secretRef:
-       name: cluster-name-secret # This Secret is not present
-       optional: false
