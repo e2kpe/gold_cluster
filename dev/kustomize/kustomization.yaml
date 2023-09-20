@@ -19,7 +19,7 @@ replacements:
     kind: Secret 
     name: cluster-name-secret
     namespace: trident 
-    fieldPath: data.cluster_name
+    fieldPath: metadata.name
   targets:
   - select: 
       name: ontap-nas
