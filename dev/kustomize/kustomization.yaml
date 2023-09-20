@@ -14,15 +14,4 @@ resources:
 #- tanzu-terraform.yaml
 transformers:
     - global-labels.yaml
-replacements: 
-- source:
-    kind: Secret 
-    name: cluster-name-secret
-    namespace: trident 
-    fieldPath: metadata.name
-  targets:
-  - select: 
-      name: ontap-nas
-      kind: TridentBackendConfig
-      namespace: trident
-      fieldPaths: spec.svm
+
