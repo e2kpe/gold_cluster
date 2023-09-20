@@ -14,6 +14,11 @@ spec:
     kind: GitRepository
     name: base-packages
     namespace: tanzu-continuousdelivery-resources
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: cluster-name-secret
+
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
