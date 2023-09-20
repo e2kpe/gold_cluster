@@ -8,8 +8,14 @@ spec:
   interval: 1m0s
   path: ./dev/post-install/trident-test
   prune: true
-  # patches:
-  #   - patch: |-
+  patches:
+    - patch: |-
+        apiVersion: trident.netapp.io/v1
+        kind: TridentBackendConfig
+        metadata:
+          name: not-used
+        spec:
+          backendName: inlinestr8fromkustomize  
   postBuild:
     substituteFrom:
       - kind: Secret
