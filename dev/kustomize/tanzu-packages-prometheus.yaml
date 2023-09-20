@@ -14,11 +14,11 @@ spec:
     kind: GitRepository
     name: base-packages
     namespace: tanzu-continuousdelivery-resources
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: prometheus-server
-      namespace: k8smonitor
+#  healthChecks:
+#    - apiVersion: apps/v1
+#      kind: Deployment
+#      name: prometheus-server
+#      namespace: k8smonitor
 
 
 
