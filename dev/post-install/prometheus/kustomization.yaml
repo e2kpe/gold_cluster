@@ -3,7 +3,7 @@ kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
 resources:
-- prometheus-sa.yaml
+#- prometheus-sa.yaml
 - prometheus-package-install.yaml
 secretGenerator:
 - name: prometheus-packages-values
