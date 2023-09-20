@@ -5,8 +5,8 @@ metadata:
   name: tanzu-packages-prometheus
   namespace: tanzu-continuousdelivery-resources
 spec:
-  dependsOn:
-    - name: prometheus-packages-sa
+#  dependsOn:
+#    - name: prometheus-packages-sa
   interval: 1m0s
   path: ./dev/post-install/prometheus
   prune: true
