@@ -23,6 +23,7 @@ spec:
       target:
         kind: TridentBackendConfig
         name: ontap-nas
+        namespace: trident
   postBuild:
     substituteFrom:
       - kind: Secret
