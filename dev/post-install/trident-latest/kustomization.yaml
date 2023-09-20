@@ -9,7 +9,7 @@ resources:
 - crds/trident-secret.yaml 
 - crds/tridentorchestrator_cr_autosupport.yaml
 - crds/trident.netapp.io_tridentorchestrators_crd.yaml
-- crds/tridentorchestrator_cr_customimage.yaml
+#- crds/tridentorchestrator_cr_customimage.yaml
 - crds/tridentorchestrator_cr.yaml
 - crds/tridentorchestrator_cr_audit_log.yaml
 - crds/tridentorchestrator_cr_default.yaml
