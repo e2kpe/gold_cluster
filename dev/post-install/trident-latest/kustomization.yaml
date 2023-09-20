@@ -6,6 +6,7 @@ resources:
 - clusterrolebinding.yaml
 - podsecuritypolicy_unprivileged.yaml
 - operator.yaml
+- crds/trident-secret.yaml 
 - crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
 - crds/tridentorchestrator_cr_autosupport.yaml
 - crds/tridentorchestrator_cr_imagepullsecrets.yaml
