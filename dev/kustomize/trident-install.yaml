@@ -15,7 +15,14 @@ spec:
         metadata:
           name: not-used
         spec:
-          backendName: inlinestr8fromkustomize  
+          backendName: inlinestr8fromkustomize 
+    - patch: |-
+        - op: replace
+          path: /spec/defaults/spaceReserve
+          value: ${cluster_name} 
+      target:
+        kind: TridentBackendConfig
+        name: ontap-nas
   postBuild:
     substituteFrom:
       - kind: Secret
