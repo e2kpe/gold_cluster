@@ -6,24 +6,25 @@ metadata:
   namespace: tanzu-continuousdelivery-resources
 spec:
   interval: 1m0s
-  path: ./dev/post-install/trident-test
+  path: ./dev/post-install/trident-latest
   prune: true
   patches:
-    - patch: |-
-        apiVersion: trident.netapp.io/v1
-        kind: TridentBackendConfig
-        metadata:
-          name: not-used
-        spec:
-          backendName: inlinestr8fromkustomize 
-    - patch: |-
-        - op: replace
-          path: /spec/defaults/spaceReserve
-          value: ${cluster_name} 
-      target:
-        kind: TridentBackendConfig
-        name: ontap-nas
-        namespace: trident
+#    - patch: |-
+#        apiVersion: trident.netapp.io/v1
+#        kind: TridentBackendConfig
+#        metadata:
+#          name: not-used
+#        spec:
+#          backendName: inlinestr8fromkustomize 
+#    - patch: |-
+#        - op: replace
+#          path: /spec/defaults/spaceReserve
+#          value: ${cluster_name} 
+#
+#      target:
+#        kind: TridentBackendConfig
+#        name: ontap-nas
+#        namespace: trident
   postBuild:
     substituteFrom:
       - kind: Secret
