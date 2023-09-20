@@ -701,8 +701,11 @@ prometheus:
         - --web.enable-lifecycle
       env:
          -  
-            name: cluster-name-secret
-            value: cluster_name
+            name: cluster_name
+            valueFrom:
+              secretKeyRef:
+                name: cluster-name-secret
+                value: cluster_name
     replicas: 1
     rollingUpdate:
       maxSurge: 25%
