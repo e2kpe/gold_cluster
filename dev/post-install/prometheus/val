@@ -704,7 +704,7 @@ prometheus:
           valueFrom:
             secretKeyRef:
               name: cluster-name-secret
-              key: cluster_name
+              value: cluster_name
     replicas: 1
     rollingUpdate:
       maxSurge: 25%
