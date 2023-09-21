@@ -5,6 +5,13 @@ metadata:
   namespace: falco
 spec:
   interval: 1m
+  install:
+    disableWait: true
+  upgrade:
+    disableWait: true
+  valuesFrom:
+  - kind: ConfigMap
+    name: helmvalue
   chart:
     spec:
       chart: falcosecurity/falco
@@ -14,7 +21,5 @@ spec:
         name: falcosecurity
         namespace: tanzu-helm-resources
       interval: 1m
-#  valuesFrom:
-#  - kind: ConfigMap
-#    name: helmvalue
+
 
