@@ -14,7 +14,7 @@ spec:
     name: helmvalue
   chart:
     spec:
-      chart: falcosecurity/falco
+      chart: falco
       version: "3.1.1"
       sourceRef:
         kind: HelmRepository
