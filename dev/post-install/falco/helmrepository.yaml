@@ -1,0 +1,9 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: falco
+  namespace: tanzu-helm-resources
+spec:
+  interval: 5m0s
+  url: https://github.com/falcosecurity/falco
