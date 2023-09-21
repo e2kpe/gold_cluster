@@ -6,4 +6,4 @@ metadata:
   namespace: tanzu-helm-resources
 spec:
   interval: 5m0s
-  url: https://github.com/falcosecurity/falco
+  url: https://github.com/falcosecurity/charts
