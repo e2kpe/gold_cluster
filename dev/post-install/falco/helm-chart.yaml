@@ -1,0 +1,17 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmChart
+metadata:
+  name: podinfo
+  namespace: tanzu-helm-resources
+spec:
+  interval: 5m0s
+  chart: falco
+  reconcileStrategy: ChartVersion
+  sourceRef:
+    kind: HelmRepository
+    name: falcosecurity
+    # namespace: tanzu-helm-resources
+    #   version: "3.1.1"
+    #     # valuesFrom: 
+    #
