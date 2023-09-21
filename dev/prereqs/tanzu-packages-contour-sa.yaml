@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: tanzu-packages-tanzu-packages-contour-sa
+  name: tanzu-packages-contour-sa
   namespace: tanzu-continuousdelivery-resources
 spec:
   dependsOn:
