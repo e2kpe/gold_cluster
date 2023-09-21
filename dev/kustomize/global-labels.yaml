@@ -2,12 +2,38 @@ apiVersion: builtin
 kind: LabelTransformer
 metadata:
   name: global-labels
-labels:
- environment: production
- app: my-app
- team: dev-team
- project: my-project
- owner: john-doe
+labels:                            # can not contain spaces or symbols other than - . _ and not more than 63 characters
+# ci-account:                      # contains spaces and symbols
+# ci-e2customer:                   # contains spaces and symbols
+  ci-hubid: HUB00001111
+# ci-solution:                     # contains spaces and symbols, lookup involves manual intervention, no machine way to decode
+  ci-environment: DEV              # STG, PROD
+# ci-stackid: e2customer-Env-SeqNo # This is application specific
+# ci-servicetier:                  # this is application specific # Production DR UAT CUST-DEV Training Sandbox Development QA Demo PSR
+  ci-department: Development       # Development ProfessionalServices Subscriptions HostingOps InfoSec Sales
 fieldSpecs:
 - path: metadata/labels
   create: true
+
+
+# https://e2open.sharepoint.com/:x:/r/ops/CM/_layouts/15/Doc.aspx?sourcedoc=%7BF5FECEC7-4F6F-4803-AF7D-8611278B8E5D%7D&file=Taxonomy%20-%20Asset%20Tagging.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1
+
+# Service Tiers
+#Production
+#DR
+#UAT
+#CUST-DEV
+#Training
+#Sandbox
+#Development
+#QA
+#Demo
+#PSR
+
+# Departments
+#Development
+#Professional Services
+#Subscriptions
+#HostingOps
+#InfoSec
+#Sales
