@@ -5,7 +5,7 @@ metadata:
   name: tanzu-packages-prometheus
   namespace: tanzu-continuousdelivery-resources
 spec:
-#  dependsOn:
+  dependsOn:
     - name: tanzu-packages-serviceaccounts
 #    - name: tanzu-packages-namespaces
 #    - name: tanzu-packages-package-repo
