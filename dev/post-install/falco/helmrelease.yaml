@@ -11,7 +11,7 @@ spec:
     disableWait: true
   valuesFrom:
   - kind: ConfigMap
-    name: helmvalue
+    name: helmvalue-4ghm7f2974
   chart:
     spec:
       chart: falco
