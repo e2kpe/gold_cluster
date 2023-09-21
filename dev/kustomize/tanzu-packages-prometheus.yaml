@@ -19,16 +19,6 @@ spec:
       - kind: Secret
         name: cluster-name-secret
 
-  patches:
-      - patch: |-
-          - op: replace
-            path: /data/prometheus/config/prometheus_yml/external_labels/cluster
-            value: ${cluster_name}
-
-        target:
-          kind: secret
-          name: prometheus-packages-values
-          namespace: packages
 
 
 
