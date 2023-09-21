@@ -5,6 +5,10 @@ metadata:
   name: helm-falco
   namespace: tanzu-continuousdelivery-resources
 spec:
+#  dependsOn:
+#    - name: tanzu-packages-serviceaccounts
+#    - name: tanzu-packages-namespaces
+#    - name: tanzu-packages-package-repo
   interval: 1m0s
   path: ./dev/post-install/falco
   prune: true
@@ -12,6 +16,3 @@ spec:
     kind: GitRepository
     name: base-packages
     namespace: tanzu-continuousdelivery-resources
-
-
-

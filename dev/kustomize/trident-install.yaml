@@ -2,9 +2,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: trident-install 
+  name: trident-install
   namespace: tanzu-continuousdelivery-resources
 spec:
+#  dependsOn:
+#    - name: tanzu-packages-serviceaccounts
+#    - name: tanzu-packages-namespaces
+#    - name: tanzu-packages-package-repo
   interval: 1m0s
   path: ./dev/post-install/trident-latest
   prune: true
@@ -15,11 +19,11 @@ spec:
 #        metadata:
 #          name: not-used
 #        spec:
-#          backendName: inlinestr8fromkustomize 
+#          backendName: inlinestr8fromkustomize
 #    - patch: |-
 #        - op: replace
 #          path: /spec/defaults/spaceReserve
-#          value: ${cluster_name} 
+#          value: ${cluster_name}
 #
 #      target:
 #        kind: TridentBackendConfig

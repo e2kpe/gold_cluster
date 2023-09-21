@@ -6,7 +6,9 @@ metadata:
   namespace: tanzu-continuousdelivery-resources
 spec:
   dependsOn:
-    - name: tanzu-packages-contour-sa 
+    - name: tanzu-packages-serviceaccounts
+#    - name: tanzu-packages-namespaces
+#    - name: tanzu-packages-package-repo
     - name: tanzu-packages-cert-manager
   interval: 1m0s
   path: ./dev/post-install/contour
@@ -20,5 +22,3 @@ spec:
       kind: Deployment
       name: contour
       namespace: tanzu-system-ingress
-
-

@@ -5,9 +5,9 @@ metadata:
   name: tanzu-packages-fluentd-bit
   namespace: tanzu-continuousdelivery-resources
 spec:
-
 #  dependsOn:
-#    - name: tanzu-packages-cert-manager-sa
+#    - name: tanzu-packages-serviceaccounts
+#    - name: tanzu-packages-namespaces
 #    - name: tanzu-packages-package-repo
   interval: 1m0s
   path: ./dev/post-install/fluentd-bit
@@ -25,4 +25,3 @@ spec:
 #      kind: Daemonset
 #      name: fluent-bit
 #      namespace: monitor-logging
-

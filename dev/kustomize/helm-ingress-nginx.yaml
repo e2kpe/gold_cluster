@@ -6,7 +6,8 @@ metadata:
   namespace: tanzu-continuousdelivery-resources
 spec:
 #  dependsOn:
-#    - name: helm-nginx-ingress-sa
+#    - name: tanzu-packages-serviceaccounts
+#    - name: tanzu-packages-namespaces
 #    - name: tanzu-packages-package-repo
   interval: 1m0s
   path: ./dev/post-install/ingress-nginx
@@ -20,6 +21,3 @@ spec:
 #      kind: Deployment
 #      name: ingress-nginx
 #      namespace: ingress-nginx
-
-
-
