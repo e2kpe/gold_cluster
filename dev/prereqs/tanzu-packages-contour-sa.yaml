@@ -2,23 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: tanzu-packages-prometheus
+  name: tanzu-packages-contour-sa
   namespace: tanzu-continuousdelivery-resources
 spec:
-#  dependsOn:
-#    - name: prometheus-packages-sa
+  dependsOn:
+    - name: tanzu-packages-namespaces
   interval: 1m0s
-  path: ./dev/post-install/prometheus
+  path: ./dev/post-install/serviceaccount/contour-sa/
   prune: true
   sourceRef:
     kind: GitRepository
     name: base-packages
     namespace: tanzu-continuousdelivery-resources
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: cluster-name-secret
-
-
-
-
