@@ -7,7 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: falco
+      chart: falcosecurity/falco
       version: "0.1.0"
       sourceRef:
         kind: HelmRepository
