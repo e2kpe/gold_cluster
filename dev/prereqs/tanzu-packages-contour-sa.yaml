@@ -1,39 +1,16 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  annotations:
-    tkg.tanzu.vmware.com/tanzu-package: contour-packages
-    kapp.k14s.io/update-strategy: "fallback-on-replace"
-  name: contour-packages-sa
-  namespace: packages
 ---
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
 metadata:
-  annotations:
-    tkg.tanzu.vmware.com/tanzu-package: contour-packages
-    kapp.k14s.io/update-strategy: "fallback-on-replace"
-  name: contour-packages-cluster-role
-rules:
-- apiGroups:
-  - '*'
-  resources:
-  - '*'
-  verbs:
-  - '*'
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  annotations:
-    tkg.tanzu.vmware.com/tanzu-package: contour-packages
-    kapp.k14s.io/update-strategy: "fallback-on-replace"
-  name: contour-packages-cluster-rolebinding
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: contour-packages-cluster-role
-subjects:
-- kind: ServiceAccount
-  name: contour-packages-sa
-  namespace: packages
+  name: tanzu-packages-tanzu-packages-contour-sa
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+    - name: tanzu-packages-namespaces
+  interval: 1m0s
+  path: ./dev/post-install/serviceaccount/contour-sa/
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: base-packages
+    namespace: tanzu-continuousdelivery-resources
