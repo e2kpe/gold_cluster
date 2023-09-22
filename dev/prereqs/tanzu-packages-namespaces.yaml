@@ -12,3 +12,5 @@ spec:
     kind: GitRepository
     name: base-packages
     namespace: tanzu-continuousdelivery-resources
+transformers:
+    - global-labels.yaml

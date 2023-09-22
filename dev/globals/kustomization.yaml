@@ -7,5 +7,5 @@ resources:
 #- tanzu-packages-psp.yaml
 #- tanzu-packages-package-repo.yaml
 #- terraform.yaml
-#transformers:
-#    - global-labels.yaml
+transformers:
+    - global-labels.yaml
