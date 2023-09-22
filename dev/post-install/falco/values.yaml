@@ -63,8 +63,8 @@ podSecurityContext:
 #     privileged: true
 #
 # 3) driver.enabled = true and driver.kind = ebpf:
-    securityContext:
-     privileged: true
+#    securityContext:
+#     privileged: true
 #
 # 4) driver.enabled = true and driver.kind = ebpf and driver.ebpf.leastPrivileged = true
 #    securityContext:
