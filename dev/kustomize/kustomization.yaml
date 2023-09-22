@@ -10,6 +10,6 @@ resources:
 - tanzu-packages-vault.yaml
 - trident-install.yaml
 - helm-falco.yaml
-#- tanzu-terraform.yaml
+- tanzu-terraform.yaml
 transformers:
     - global-labels.yaml
