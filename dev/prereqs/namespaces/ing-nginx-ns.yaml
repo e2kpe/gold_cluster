@@ -9,3 +9,18 @@ metadata:
     project: my-project
     owner: john-doe
 
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    kustomize.toolkit.fluxcd.io/name: tanzu-packages-namespaces
+    kustomize.toolkit.fluxcd.io/namespace: tanzu-continuousdelivery-resources
+  name: falco-privileged-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp:vmware-system-privileged
+subjects:
+- kind: ServiceAccount
+  name: podinfo-ingress-nginx
+  namespace: ingress-nginx
