@@ -5,16 +5,19 @@ metadata:
   namespace: falco
 spec:
   interval: 1m
-  chart:
-    spec:
-      chart: falco
-      version: "0.1.0"
-      sourceRef:
-        kind: HelmRepository
-        name: falco
-        namespace: tanzu-helm-resources
-      interval: 1m
+  install:
+    disableWait: true
+  upgrade:
+    disableWait: true
   valuesFrom:
   - kind: ConfigMap
     name: helmvalue
-
+  chart:
+    spec:
+      chart: falco
+      version: "3.6.1"
+      sourceRef:
+        kind: HelmRepository
+        name: falcosecurity
+        namespace: tanzu-helm-resources
+      interval: 1m

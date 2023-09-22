@@ -5,8 +5,10 @@ metadata:
   name: tanzu-packages-prometheus
   namespace: tanzu-continuousdelivery-resources
 spec:
-#  dependsOn:
-#    - name: prometheus-packages-sa
+  dependsOn:
+    - name: tanzu-packages-serviceaccounts
+#    - name: tanzu-packages-namespaces
+#    - name: tanzu-packages-package-repo
   interval: 1m0s
   path: ./dev/post-install/prometheus
   prune: true
@@ -18,7 +20,3 @@ spec:
     substituteFrom:
       - kind: Secret
         name: cluster-name-secret
-
-
-
-
