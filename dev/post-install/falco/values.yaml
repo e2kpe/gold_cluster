@@ -48,7 +48,7 @@ podPriorityClassName:
 # -- Set securityContext for the pods
 # These security settings are overriden by the ones specified for the specific
 # containers when there is overlap.
-podSecurityContext: {}
+podSecurityContext: 
 
 # Note that `containerSecurityContext`:
 #  - will not apply to init containers, if any;
