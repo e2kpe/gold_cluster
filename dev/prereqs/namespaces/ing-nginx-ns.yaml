@@ -16,7 +16,7 @@ metadata:
   labels:
     kustomize.toolkit.fluxcd.io/name: tanzu-packages-namespaces
     kustomize.toolkit.fluxcd.io/namespace: tanzu-continuousdelivery-resources
-  name: falco-privileged-binding
+  name: ingress-nginx-privileged-binding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
