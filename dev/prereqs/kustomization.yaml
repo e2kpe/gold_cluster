@@ -4,7 +4,7 @@ resources:
 - tanzu-packages-namespaces.yaml
 - tanzu-packages-serviceaccounts.yaml
 - cluster-name-secret.yaml
-- terraform-controller.yaml
+#- terraform-controller.yaml
 #- tanzu-packages-psp.yaml
 #- tanzu-packages-package-repo.yaml
 #- terraform.yaml
