@@ -8,7 +8,6 @@ spec:
   dependsOn:
     - name: tanzu-packages-serviceaccounts
     - name: tanzu-packages-namespaces
-    - name: tanzu-packages-package-repo
   interval: 1m0s
   path: ./dev/post-install/vault
   prune: true
