@@ -4,6 +4,7 @@ resources:
 - psp.yaml
 - external-secret-operator-install.yaml
 - tanzu-packages-vault.yaml
+- clustersecretstore.yaml
 - tanzu-packages-cert-manager.yaml
 - tanzu-packages-prometheus.yaml
 - helm-ingress-nginx.yaml
