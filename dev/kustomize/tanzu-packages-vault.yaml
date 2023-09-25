@@ -16,7 +16,7 @@ spec:
     name: base-packages
     namespace: tanzu-continuousdelivery-resources
   healthChecks:
-    - apiVersion: apps/v1
-      kind: pod
-      name: vault
+    - apiVersion: batch/v1
+      kind: Jobs
+      name: vault-gitops-job
       namespace: external-secrets
