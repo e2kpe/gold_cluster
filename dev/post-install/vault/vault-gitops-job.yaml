@@ -9,16 +9,16 @@ metadata:
   name: vault-auth-enabler-token
   namespace: external-secrets
 ---
-apiVersion: batch/v1 
-kind: Job 
+apiVersion: v1
+kind: Pod
 metadata:   
   name: vault-gitops-job 
   namespace: external-secrets  
-  labels:     
-spec:   
-  template:     
-    metadata:       
-      name: vault-gitops      
+#  labels:     
+#spec:   
+#  template:     
+#    metadata:       
+#      name: vault-gitops      
     spec:       
       restartPolicy: OnFailure
       containers:
