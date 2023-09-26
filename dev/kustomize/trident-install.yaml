@@ -5,10 +5,10 @@ metadata:
   name: trident-install
   namespace: tanzu-continuousdelivery-resources
 spec:
-#  dependsOn:
-#    - name: tanzu-packages-serviceaccounts
-#    - name: tanzu-packages-namespaces
-#    - name: tanzu-packages-package-repo
+  dependsOn:
+    - name: tanzu-packages-serviceaccounts
+    - name: tanzu-packages-namespaces
+    - name: clustersecretstore
   interval: 1m0s
   path: ./dev/post-install/trident-latest
   prune: true
