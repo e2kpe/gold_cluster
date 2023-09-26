@@ -38,7 +38,6 @@ stringData:
       alertmanager_prefix: '/alertmanager/'
       alertmanagerServicePort: 80
       enabled: false
-      prometheus_prefix: "/"
       prometheusServicePort: 80
       tlsCertificate:
         ca.crt: 
