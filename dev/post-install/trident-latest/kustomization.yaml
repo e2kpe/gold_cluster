@@ -3,10 +3,6 @@ kind: Kustomization
 resources:
 - vault-ss.yaml
 - trident-secret.yaml
-- serviceaccount.yaml
-- clusterrole_pre_1_25.yaml
-- clusterrolebinding.yaml
-- podsecuritypolicy_unprivileged.yaml
 - storage-class.yaml
 - backend-tbc.yaml
 namespace: trident
