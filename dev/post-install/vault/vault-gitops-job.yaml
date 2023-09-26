@@ -13,6 +13,9 @@ spec:
       restartPolicy: OnFailure
       containers:
       - args:
+        env:
+        - name: VAULT_ADDR
+          value: https://vault.dev.e2open.com
         command:
         -   /bin/k8s-vault-register.sh
         image: artifactory.dev.e2open.com/dcops-docker-repo/vault-gitops:0.2
