@@ -9,7 +9,7 @@ resources:
 - podsecuritypolicy_unprivileged.yaml
 - operator.yaml
 #- crds/trident.netapp.io_tridentorchestrators_crd.yaml
-- crds/tridentorchestrator_cr_imagepullsecrets.yaml
+#- crds/tridentorchestrator_cr_imagepullsecrets.yaml
 - crds/storage-class.yaml
 - crds/backend-tbc.yaml
 namespace: trident
