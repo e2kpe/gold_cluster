@@ -1,14 +1,4 @@
 ---
-apiVersion: v1
-data:
-  VAULT_APPROLE_ROLE_ID: YzQxMzBjMjktMTZmOS1hNzM4LTk3MGQtYmQ4OGVmODg1NTU1
-  VAULT_APPROLE_SECRET_ID: ZjVkNDcyM2YtMTMxYi1mODA5LTM4NjMtODY5YTA4ZDE5ZDJk
-kind: Secret
-metadata:
-  creationTimestamp: null
-  name: vault-auth-enabler-token
-  namespace: external-secrets
----
 apiVersion: batch/v1 
 kind: Job 
 metadata:   
@@ -23,16 +13,8 @@ spec:
       restartPolicy: OnFailure
       containers:
       - args:
-        - -ec
-        - "export VAULT_ADDR=https://vault.dev.e2open.com;export VAULT_TOKEN=$(vault write auth/approle/login role_id=$VAULT_APPROLE_ROLE_ID secret_id=$VAULT_APPROLE_SECRET_ID -format=json | /bin/jq  .auth.client_token);"
         command:
         -   /bin/k8s-vault-register.sh
-        env:
-        - name: VAULT_ADDR
-          value: https://vault.dev.e2open.com
-        envFrom:
-        - secretRef:
-             name: vault-auth-enabler-token
         image: artifactory.dev.e2open.com/dcops-docker-repo/vault-gitops:0.2
         imagePullPolicy: Always
         name: vault-gitops
