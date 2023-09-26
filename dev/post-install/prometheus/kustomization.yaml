@@ -5,15 +5,8 @@ generatorOptions:
 resources:
 #- prometheus-sa.yaml
 - prometheus-package-install.yaml
+- prometheus-data-values.yaml
 secretGenerator:
-- name: prometheus-packages-values
-  namespace: packages
-  files:
-  - prometheus-data-values.yaml
-  type: Opaque
-  options:
-    annotations:
-      tkg.tanzu.vmware.com/tanzu-package: prometheus-packages
 - name: alertmanager-overlay
   namespace: packages
   files:
@@ -22,3 +15,4 @@ secretGenerator:
   options:
     annotations:
       tkg.tanzu.vmware.com/tanzu-package: prometheus-packages
+
