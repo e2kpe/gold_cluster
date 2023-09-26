@@ -35,10 +35,10 @@ stringData:
         targetPort: 9093
         type: ClusterIP
     ingress:
-      alertmanager_prefix: /alertmanager/
+      alertmanager_prefix: '/alertmanager/'
       alertmanagerServicePort: 80
       enabled: false
-      prometheus_prefix: /
+      prometheus_prefix: "/"
       prometheusServicePort: 80
       tlsCertificate:
         ca.crt: 
