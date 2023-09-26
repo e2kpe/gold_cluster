@@ -5,6 +5,14 @@ generatorOptions:
 resources:
 #- prometheus-sa.yaml
 - prometheus-package-install.yaml
+vars:
+- name: cluster_name
+  objref:
+    kind: Secret
+    name: cluster-name-secret
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.cluster_name
 secretGenerator:
 - name: prometheus-packages-values
   namespace: packages
