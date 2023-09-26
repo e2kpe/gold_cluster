@@ -12,6 +12,7 @@ resources:
 - tanzu-packages-fluent-bit.yaml
 - trident-install.yaml
 - helm-falco.yaml
+- trident-crd.yaml
 #- tanzu-terraform.yaml
 transformers:
     - global-labels.yaml

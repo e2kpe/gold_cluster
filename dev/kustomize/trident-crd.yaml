@@ -2,16 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: trident-install
+  name: trident-crd
   namespace: tanzu-continuousdelivery-resources
 spec:
-  dependsOn:
-    - name: tanzu-packages-serviceaccounts
-    - name: tanzu-packages-namespaces
-    - name: clustersecretstore
-    - name: trident-crd
   interval: 1m0s
-  path: ./dev/post-install/trident-latest
+  path: ./dev/post-install/trident-crds/
   prune: true
 #  patches:
 #    - patch: |-
