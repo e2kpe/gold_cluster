@@ -1,6 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+- vault-ss.yaml
 - serviceaccount.yaml
 - clusterrole_pre_1_25.yaml
 - clusterrolebinding.yaml

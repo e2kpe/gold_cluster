@@ -1,0 +1,29 @@
+apiVersion: v1
+items:
+- apiVersion: external-secrets.io/v1beta1
+  kind: SecretStore
+  metadata:
+    name: vault
+    namespace: trident
+  spec:
+    provider:
+      vault:
+        auth:
+          kubernetes:
+            mountPath: $cluster_name
+
+            role: trident
+            serviceAccountRef:
+              name: vault-auth
+        caProvider:
+          key: vault-ca.crt
+          name: vault-ca
+          namespace: kube-public
+          type: ConfigMap
+        path:  $cluster_name
+        server: https://vault.dev.e2open.com
+        version: v2
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
