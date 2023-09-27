@@ -75,23 +75,23 @@ stringData:
             scrape_timeout: 10s
             external_labels: 
               cluster: ${cluster_name}
-  #       rule_files:
-  #       - /etc/config/alerting_rules.yml
-  #       - /etc/config/recording_rules.yml
-  #       - /etc/config/alerts
-  #       - /etc/config/rules
-  #       remote_write:
-  #       - url: https://prometheus.dev.e2open.com:9090/api/v1/write
-  #         tls_config:
-  #           insecure_skip_verify: true
-  #       scrape_configs:
-  #       - job_name: 'prometheus'
-  #         scrape_interval: 5s
-  #         static_configs:
-  #         - targets: ['localhost:9090']
-  #       - job_name: 'kube-state-metrics'
-  #         static_configs:
-  #         - targets: ['prometheus-kube-state-metrics.k8smonitor.svc.cluster.local:8080']
+          rule_files:
+          - /etc/config/alerting_rules.yml
+          - /etc/config/recording_rules.yml
+          - /etc/config/alerts
+          - /etc/config/rules
+          remote_write:
+          - url: https://prometheus.dev.e2open.com:9090/api/v1/write
+            tls_config:
+              insecure_skip_verify: true
+          scrape_configs:
+          - job_name: 'prometheus'
+            scrape_interval: 5s
+            static_configs:
+            - targets: ['localhost:9090']
+          - job_name: 'kube-state-metrics'
+            static_configs:
+            - targets: ['prometheus-kube-state-metrics.k8smonitor.svc.cluster.local:8080']
 
   #       - job_name: 'node-exporter'
   #         static_configs:
