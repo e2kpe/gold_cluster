@@ -1,0 +1,18 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: ClusterNetworkPolicy
+metadata:
+  name: acnp-drop-except-own-cluster-node-cidr
+spec:
+  priority: 8
+  tier: securityops
+  appliedTo:
+    - namespaceSelector:          # Selects all non-system Namespaces in the cluster
+        matchExpressions:
+          - {key:  kubernetes.io/metadata.name, operator: NotIn, values: [avi-system,default,kube-node-lease,kube-public,kube-system,secretgen-controller,tanzu-continuousdelivery-resources,tanzu-fluxcd-packageinstalls,tanzu-kustomize-controller,tanzu-source-controller,tkg-system,vmware-system-auth,vmware-system-cloud-provider,vmware-system-csi,vmware-system-tkg,vmware-system-tmc]}
+  egress:
+    - action: Allow
+      to:
+        - group: "tz-cluster-1-node-cidr"
+    - action: Drop
+      to:
+        - group: "tz-cluster-1-drop-cidr"

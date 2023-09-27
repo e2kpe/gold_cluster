@@ -1,0 +1,19 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-to-staging-ip
+spec:
+  priority: 100
+  tier: securityops
+  appliedTo:
+    - podSelector:
+        matchLabels:
+          run: dnstools
+  egress:
+  - to:
+    - ipBlock: "10.122.0.183"
+#      namespaces:
+#        match: packages
+    ports:
+    - protocol: TCP
+      port: 80

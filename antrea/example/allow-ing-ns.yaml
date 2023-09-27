@@ -1,0 +1,40 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: NetworkPolicy
+metadata:
+  name: test-dnstool
+  namespace: 
+spec:
+    priority: 5
+    tier: securityops
+    appliedTo:
+      - podSelector:
+          matchLabels:
+            role: db
+    ingress:
+      - action: Allow
+        from:
+          - podSelector:
+              matchLabels:
+                role: frontend
+          - podSelector:
+              matchLabels:
+                role: nondb
+            namespaceSelector:
+              matchLabels:
+                role: db
+        ports:
+          - protocol: TCP
+            port: 8080
+            endPort: 9000
+        name: AllowFromFrontend
+        enableLogging: false
+    egress:
+      - action: Drop
+        to:
+          - ipBlock:
+              cidr: 10.0.10.0/24
+        ports:
+          - protocol: TCP
+            port: 5978
+        name: DropToThirdParty
+        enableLogging: true

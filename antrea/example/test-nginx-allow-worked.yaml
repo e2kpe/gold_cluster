@@ -1,0 +1,44 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"crd.antrea.io/v1alpha1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"test-nginx","namespace":"packages"},"spec":{"appliedTo":[{"podSelector":{"matchLabels":{"app.kubernetes.io/instance":"my-release"}}}],"ingress":[{"action":"Allow","enableLogging":false,"from":[{"podSelector":{"matchLabels":{"run":"dnstools"}}},{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"test"}},"podSelector":{"matchLabels":{"role":"nondb"}}}],"name":"AllowFromFrontend","ports":[{"port":80,"protocol":"TCP"}]}],"priority":5,"tier":"emergency"}}
+  creationTimestamp: "2023-09-26T13:27:39Z"
+  generation: 4
+  name: test-nginx
+  namespace: packages
+  resourceVersion: "5668762"
+  uid: a89edbea-d25e-4a2e-8f97-7033e85b190f
+spec:
+  appliedTo:
+  - podSelector:
+      matchLabels:
+        app.kubernetes.io/instance: my-release
+  ingress:
+  - action: Allow
+    enableLogging: false
+    from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: test
+      podSelector:
+        matchLabels:
+          run: dnstools
+    name: AllowFromFrontend
+    ports:
+    - port: 80
+      protocol: TCP
+    - port: 80
+      protocol: UDP
+    - port: 8080
+      protocol: TCP
+    - port: 8080
+      protocol: UDP
+  priority: 5
+  tier: emergency
+status:
+  currentNodesRealized: 1
+  desiredNodesRealized: 1
+  observedGeneration: 4
+  phase: Realized

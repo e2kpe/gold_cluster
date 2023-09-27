@@ -1,0 +1,20 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: ClusterNetworkPolicy
+metadata:
+  name: allow-all-egress-dns-service
+  namespace: packages
+spec:
+  priority: 8
+  tier: securityops
+  appliedTo:
+    - namespaceSelector: {}
+#        matchLabels:
+#          k8s-app: kube-dns
+  egress:
+    - action: Allow
+      toServices:
+        - name: kube-dns
+          namespace: kube-system
+        - name: my-release-nginx
+          namespace: packages
+      name: "allow-nginx-service"
