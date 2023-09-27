@@ -92,11 +92,9 @@ stringData:
           - job_name: 'kube-state-metrics'
             static_configs:
             - targets: ['prometheus-kube-state-metrics.k8smonitor.svc.cluster.local:8080']
-
           - job_name: 'node-exporter'
             static_configs:
             - targets: ['prometheus-node-exporter.k8smonitor.svc.cluster.local:9100']
-
           - job_name: 'kubernetes-pods'
             kubernetes_sd_configs:
             - role: pod
