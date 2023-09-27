@@ -1,0 +1,43 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: NetworkPolicy
+metadata:
+  name: test-nginx
+  namespace: packages
+spec:
+    priority: 5
+    tier: emergency
+    appliedTo:
+      - podSelector:
+          matchLabels:
+            app.kubernetes.io/instance: my-release
+#            role: db
+    ingress:
+      - action: Allow
+        from:
+          - podSelector:
+              matchLabels:
+                run: dnstools
+#                role: frontend
+          - podSelector:
+              matchLabels:
+                role: nondb
+            namespaceSelector:
+              matchLabels:
+                kubernetes.io/metadata.name: test
+#                role: db
+        ports:
+          - protocol: TCP
+            port: 80
+#            endPort: 9000
+        name: AllowFromFrontend
+        enableLogging: false
+#    egress:
+#      - action: Drop
+#        to:
+#          - ipBlock:
+#              cidr: 10.0.10.0/24
+#        ports:
+#          - protocol: TCP
+#            port: 5978
+#        name: DropToThirdParty
+#        enableLogging: true

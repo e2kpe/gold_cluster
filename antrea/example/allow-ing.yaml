@@ -1,0 +1,28 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-from-packages
+spec:
+  priority: 100
+  tier: securityops
+  appliedTo:
+    - podSelector:
+        matchLabels:
+           run: dnstools
+#           role: db
+#      namespaceSelector:
+#        matchLabels:
+#          kubernetes.io/metadata.name: test
+#        name: test
+  ingress:
+    - action: Allow
+      from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/instance: my-release
+          namespaceSelector:
+            matchLabels:
+                kubernetes.io/metadata.name: packages
+      ports:
+      - protocol: TCP
+        port: 80

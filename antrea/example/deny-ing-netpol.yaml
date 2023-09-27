@@ -1,0 +1,14 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-incoming-traffic
+spec:
+  priority: 100
+  tier: securityops
+  appliedTo:
+  - podSelector:
+      matchLabels:
+        app.kubernetes.io/instance: my-release
+#        app: 
+  ingress:
+  - action: Drop

@@ -1,0 +1,28 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: ClusterNetworkPolicy
+metadata:
+  name: acnp-permit-dev-tkc
+spec:
+  priority: 7
+  tier: securityops
+  appliedTo:
+    - namespaceSelector:          # Selects all non-system Namespaces in the cluster
+        matchExpressions:
+          - {key:  kubernetes.io/metadata.name, operator: In, values: [default,packages]}
+  egress:
+    - action: Allow
+      to:
+        - group: "dev-demo-cg"
+    - action: Drop
+      to:
+        - group: "demo"
+  ingress:
+    - action: Allow
+      from:
+        - group: "dev-demo-cg"
+      ports:
+        - protocol: TCP
+          port: 80
+        - protocol: UDP
+          port: 80
+      name: allowfortkc

@@ -1,0 +1,10 @@
+apiVersion: crd.antrea.io/v1alpha3
+kind: ClusterGroup
+metadata:
+  name: dev-k8s-jumpbox
+spec:
+  # ipBlocks cannot be set along with podSelector, namespaceSelector or serviceReference.
+  ipBlocks:
+    - cidr: 10.120.96.30/19
+    - cidr: 10.120.96.41/19
+   

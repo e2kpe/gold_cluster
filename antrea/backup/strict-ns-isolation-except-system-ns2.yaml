@@ -1,0 +1,46 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: ClusterNetworkPolicy
+metadata:
+  name: strict-ns-isolation-except-system-ns2
+spec:
+  appliedTo:
+  - namespaceSelector:
+      matchExpressions:
+      - key: kubernetes.io/metadata.name
+        operator: NotIn
+        values:
+        - avi-system
+        - default
+        - kube-node-lease
+        - kube-public
+        - kube-system
+        - secretgen-controller
+        - tanzu-continuousdelivery-resources
+        - tanzu-fluxcd-packageinstalls
+        - tanzu-kustomize-controller
+        - tanzu-source-controller
+        - tkg-system
+        - vmware-system-auth
+        - vmware-system-cloud-provider
+        - vmware-system-csi
+        - vmware-system-tkg
+        - external-namespace
+        - vmware-system-tmc
+  egress:
+  - action: Pass
+    name: PassToSameNS
+    to:
+    - namespaces:
+        match: Self
+  - action: Drop
+    name: DropToAllOtherNS
+  ingress:
+  - action: Pass
+    from:
+    - namespaces:
+        match: Self
+    name: PassFromSameNS
+  - action: Drop
+    name: DropFromAllOtherNS
+  priority: 9
+  tier: securityops
