@@ -1,0 +1,34 @@
+
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+metadata:
+  name: test-tkc  # TKC cluster name
+  namespace: workshop-referenece #vSphere Namespace
+spec:
+  distribution:
+    version: 1.23.8+vmware.1-tkg.1     # TKC version to be build
+  settings:
+    storage:
+      defaultClass: vmfs-san   # update storage class name
+
+  topology:
+    controlPlane:
+      count: 1                                 #number of control plane nodes
+      class: best-effort-medium                 #vmclass for control plane nodes
+      storageClass: vmfs-san   # update storage class name
+      volumes:
+      - name: etcd
+        mountPath: /var/lib/etcd
+        capacity:
+           storage: 50Gi
+
+    workers:
+      count: 1                                 #number of worker nodes
+      class: best-effort-medium                #vmclass for worker nodes
+      storageClass: vmfs-san   # update storage class name
+      volumes:
+      - name: containerd
+        mountPath: /var/lib/containerd
+        capacity:
+           storage: 100Gi
+

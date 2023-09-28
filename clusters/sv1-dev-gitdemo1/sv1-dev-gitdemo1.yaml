@@ -1,0 +1,97 @@
+fullName:
+  managementClusterName: e2open-dev-tanzu
+  name: sv1-dev-gitdemo1
+  orgId: fc146fc8-5aa7-45b4-a4ea-b8c297477c23
+  provisionerName: sv1-dev-sandbox-vns
+meta:
+  annotations:
+    authoritativeRID: rid:c:fc146fc8-5aa7-45b4-a4ea-b8c297477c23:e2open-dev-tanzu:sv1-dev-sandbox-vns:sv1-dev-gitdemo1
+  creationTime: "2023-09-28T12:48:00.614768Z"
+  labels:
+    tmc.cloud.vmware.com/creator: michael.kronvold_e2open.com
+  parentReferences:
+  - rid: rid:cg:fc146fc8-5aa7-45b4-a4ea-b8c297477c23:e2open-dev-tanzu
+    uid: cg:01FSXX8KNXPS8CCM9PEEFJ2P8F
+  - rid: rid:prvn:fc146fc8-5aa7-45b4-a4ea-b8c297477c23:e2open-dev-tanzu:sv1-dev-sandbox-vns
+    uid: prvn:01H2J0AYCGHA49R37NVYMZ4F4M
+  resourceVersion: 646495:657622942
+  uid: c:01HBDX9WK8Q5R9523J1NERWGFA
+  updateTime: "2023-09-28T13:32:48Z"
+spec:
+  clusterGroupName: e2open-dev-tanzu
+  tkgServiceVsphere:
+    distribution:
+      version: v1.24.11+vmware.1-fips.1-tkg.1.ubuntu
+    settings:
+      network:
+        pods:
+          cidrBlocks:
+          - 172.20.0.0/16
+        services:
+          cidrBlocks:
+          - 10.96.0.0/16
+      storage: {}
+    topology:
+      controlPlane:
+        class: best-effort-small
+        storageClass: vmfs-san
+status:
+  allocatedCpu:
+    allocatable: 4000
+    allocatedPercentage: 86
+    requested: 3440
+    units: millicores
+  allocatedMemory:
+    allocatable: 11664
+    allocatedPercentage: 25
+    requested: 2992
+    units: mb
+  conditions:
+    Agent-ExtensionsOutOfSync:
+      message: all extensions are up-to-date
+      reason: ExtensionsUpToDate
+      severity: INFO
+      status: "FALSE"
+      type: ExtensionsOutOfSync
+    Agent-READY:
+      message: cluster is connected to TMC and healthy
+      reason: 'phase: COMPLETE, health: HEALTHY'
+      severity: INFO
+      status: "TRUE"
+      type: READY
+    WCM-Ready:
+      severity: INFO
+      status: "TRUE"
+      type: Ready
+    WCM-VersionIsLatest:
+      severity: INFO
+      status: "TRUE"
+      type: VersionIsLatest
+  health: HEALTHY
+  healthDetails:
+    controllerManagerHealth:
+      health: HEALTHY
+      message: Healthy
+      name: controller-manager
+    etcdHealth:
+    - health: HEALTHY
+      message: Healthy
+      name: etcd-0
+    message: Cluster is healthy
+    schedulerHealth:
+      health: HEALTHY
+      message: Healthy
+      name: scheduler
+    timestamp: "2023-09-28T13:32:39Z"
+  infrastructureProvider: VMWARE_VSPHERE
+  kubeServerVersion: v1.24.11+vmware.1-fips.1
+  kubernetesProvider:
+    type: VMWARE_TANZU_KUBERNETES_GRID_SERVICE
+  nodeCount: "2"
+  phase: READY
+  type: TANZU_KUBERNETES_GRID_SERVICE
+type:
+  kind: Cluster
+  package: vmware.tanzu.manage.v1alpha1.cluster
+  version: v1alpha1
+
