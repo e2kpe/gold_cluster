@@ -7,6 +7,8 @@ metadata:
       tkg.tanzu.vmware.com/tanzu-package: prometheus-packages
 stringData: 
   prometheus-data-values.yaml: |
+    alertmanager:
+      enabled: false
     ingress:
       alertmanager_prefix: /alertmanager/
       alertmanagerServicePort: 80
