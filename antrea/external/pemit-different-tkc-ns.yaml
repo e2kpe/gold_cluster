@@ -1,25 +1,28 @@
 apiVersion: crd.antrea.io/v1alpha1
 kind: ClusterNetworkPolicy
 metadata:
-  name: acnp-deny-dev-jumpbox
+  name: acnp-permit-dev-tkc
 spec:
   priority: 7
   tier: emergency
   appliedTo:
     - namespaceSelector:          # Selects all non-system Namespaces in the cluster
         matchExpressions:
-          - {key:  kubernetes.io/metadata.name, operator: In, values: [packages,test,default]}
+          - {key:  kubernetes.io/metadata.name, operator: In, values: [packages,test]}
   egress:
+    - action: Allow
+      to:
+        - group: "dev-demo-cg"
     - action: Drop
       to:
-        - group: "dev-k8s-jumpbox"
+        - group: "demo"
   ingress:
-    - action: Drop
+    - action: Allow
       from:
         - group: "dev-demo-cg"
       ports:
         - protocol: TCP
+          port: 8080
+        - protocol: TCP
           port: 80
-        - protocol: UDP
-          port: 80
-      name: deny-k8s-jumpbox
+      name: allowfortkc
