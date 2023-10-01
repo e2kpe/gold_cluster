@@ -10,7 +10,6 @@ spec:
         operator: NotIn
         values:
         - avi-system
-        - default
         - kube-node-lease
         - kube-public
         - kube-system
@@ -40,12 +39,5 @@ spec:
     - namespaces:
         match: Self
     name: PassFromSameNS
-  - action: Drop
-    from:
-      - ipBlock:
-          cidr: 10.120.96.30/19
-      - ipBlock:
-          cidr: 10.120.96.41/19
-    name: DropFromAllOtherNS
-  priority: 20
+  priority: 100
   tier: securityops
