@@ -12,10 +12,6 @@ spec:
   interval: 1m0s
   path: ./dev/workload/${cluster_name}
   prune: true
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: cluster-name-secret
   sourceRef:
     kind: GitRepository
     name: base-packages
