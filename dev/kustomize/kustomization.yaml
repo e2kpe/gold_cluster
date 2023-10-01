@@ -13,6 +13,7 @@ resources:
 - trident-install.yaml
 - helm-falco.yaml
 - trident-crd.yaml
+- workload-namespace.yaml
 #- tanzu-terraform.yaml
 transformers:
     - global-labels.yaml
