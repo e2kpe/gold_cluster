@@ -9,7 +9,6 @@ spec:
     - name: tanzu-packages-serviceaccounts
     - name: tanzu-packages-namespaces
     - name: clustersecretstore
-    - name: 
   interval: 1m0s
   path: ./dev/workload/${cluster_name}
   prune: true
