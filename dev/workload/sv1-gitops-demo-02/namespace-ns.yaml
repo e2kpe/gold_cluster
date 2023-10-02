@@ -3,4 +3,10 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: sv1-gitops-demo-02-ns
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sv1-gitops-demo-02-ns-demo
+
 
