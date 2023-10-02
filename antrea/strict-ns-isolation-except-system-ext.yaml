@@ -1,47 +1,13 @@
 apiVersion: crd.antrea.io/v1alpha1
 kind: ClusterNetworkPolicy
 metadata:
-  name: strict-ns-isolation-except-system-ns2
+  name: default-cluster-deny-external
 spec:
+  priority: 253
+  tier: baseline
   appliedTo:
-  - namespaceSelector:
-      matchExpressions:
-      - key: kubernetes.io/metadata.name
-        operator: NotIn
-        values:
-        - avi-system
-        - kube-node-lease
-        - kube-public
-        - kube-system
-        - secretgen-controller
-        - tanzu-continuousdelivery-resources
-        - tanzu-fluxcd-packageinstalls
-        - tanzu-kustomize-controller
-        - tanzu-source-controller
-        - tkg-system
-        - vmware-system-auth
-        - vmware-system-cloud-provider
-        - vmware-system-csi
-        - vmware-system-tkg
-        - external-namespace
-        - vmware-system-tmc
-  egress:
-  - action: Pass
-    name: PassToSameNS
-    to:
-    - namespaces:
-        match: Self
-  - action: Drop
-    name: DropToAllOtherNS
+    - namespaceSelector: {}       # Selects all Namespaces in the cluster
   ingress:
-  - action: Pass
-    from:
-    - namespaces:
-        match: Self
-    name: PassFromSameNS
-  - action: Drop
-    from:
-    - namespaceSelector: {}
-    name: PassFromexteNS
-  priority: 100
-  tier: securityops
+    - action: Drop
+  egress:
+    - action: Drop

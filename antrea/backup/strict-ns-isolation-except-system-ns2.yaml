@@ -41,6 +41,11 @@ spec:
         match: Self
     name: PassFromSameNS
   - action: Drop
+    from:
+      - ipBlock:
+          cidr: 10.120.96.30/19
+      - ipBlock:
+          cidr: 10.120.96.41/19
     name: DropFromAllOtherNS
-  priority: 9
+  priority: 20
   tier: securityops

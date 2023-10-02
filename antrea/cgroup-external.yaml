@@ -1,0 +1,9 @@
+apiVersion: crd.antrea.io/v1alpha3
+kind: ClusterGroup
+metadata:
+  name: sandbox-demo-cg
+spec:
+  # ipBlocks cannot be set along with podSelector, namespaceSelector or serviceReference.
+  ipBlocks:
+    - cidr: 10.244.2.33/28
+   

@@ -1,0 +1,9 @@
+apiVersion: crd.antrea.io/v1alpha3
+kind: ClusterGroup
+metadata:
+  name: test-cg-svc-ref
+spec:
+  # serviceReference cannot be set along with podSelector, namespaceSelector or ipBlocks.
+  serviceReference:
+    name: my-release-nginx
+    namespace: packages

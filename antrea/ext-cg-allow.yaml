@@ -1,0 +1,34 @@
+apiVersion: crd.antrea.io/v1alpha1
+kind: ClusterNetworkPolicy
+metadata:
+  name: acnp-with-cluster-groups
+spec:
+  priority: 8
+  tier: securityops
+  appliedTo:
+    - group: "test-cg-svc-ref"
+  ingress:
+    - action: Allow
+      from:
+        - ipBlock:
+            cidr: 10.120.96.30/19
+      ports:
+        - protocol: TCP
+          port: 80
+
+    - action: Allow
+      from:
+        - ipBlock:
+            cidr: 10.120.96.41/19
+      ports:
+        - protocol: TCP
+          port: 80
+
+    - action: Allow
+      from:
+        - ipBlock:
+            cidr: 10.0.0.0/8
+      ports:
+        - protocol: TCP
+          port: 80
+
