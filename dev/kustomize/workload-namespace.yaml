@@ -10,11 +10,7 @@ spec:
     - name: tanzu-packages-namespaces
     - name: clustersecretstore
   interval: 1m0s
-  path: ./dev/workload/${cluster_name}
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: cluster-name-secret
+  path: ./dev/workload/sv1-gitops-demo-02
   prune: true
   sourceRef:
     kind: GitRepository
