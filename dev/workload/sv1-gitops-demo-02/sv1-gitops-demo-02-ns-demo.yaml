@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sv1-gitops-demo-02-ns-demo
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-auth
+  namespace: sv1-gitops-demo-02-ns-demo
+secrets:
+- name: vault-auth-token
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-auth-token
+  namespace: sv1-gitops-demo-02-ns-demo
+  annotations:
+    kubernetes.io/service-account.name: vault-auth
+type: kubernetes.io/service-account-token
+
+---
+apiVersion: v1
+items:
+- apiVersion: external-secrets.io/v1beta1
+  kind: SecretStore
+  metadata:
+    name: vault
+    namespace: sv1-gitops-demo-02-ns-demo
+  spec:
+    provider:
+      vault:
+        auth:
+          kubernetes:
+            mountPath: ${cluster_name}
+
+            role: sv1-gitops-demo-02-ns-demo
+            serviceAccountRef:
+              name: vault-auth
+        caProvider:
+          key: vault-ca.crt
+          name: vault-ca
+          namespace: kube-public
+          type: ConfigMap
+        path:  ${cluster_name}
+        server: https://vault.dev.e2open.com
+        version: v2
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
