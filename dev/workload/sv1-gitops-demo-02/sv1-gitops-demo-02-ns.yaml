@@ -5,4 +5,13 @@ metadata:
   name: sv1-gitops-demo-02-ns
 ---
 
-
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretImport
+metadata:
+  labels:
+    kustomize.toolkit.fluxcd.io/name: tanzu-packages-secret-importer
+    kustomize.toolkit.fluxcd.io/namespace: tanzu-continuousdelivery-resources
+  name: regcred
+  namespace: sv1-gitops-demo-02-ns
+spec:
+  fromNamespace: default
