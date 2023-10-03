@@ -3,6 +3,14 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: sv1-gitops-demo-02-ns
+  labels:
+    ci-account: test
+    ci-department: ci-e2customer
+    ci-e2customer: ci-env
+    ci-env: ci-hubid
+    ci-hubid: ci-servicetier
+    ci-servicetier: test
+    ci-solution: test
 ---
 
 apiVersion: secretgen.carvel.dev/v1alpha1
