@@ -1,10 +1,8 @@
 apiVersion: crd.antrea.io/v1alpha1
 kind: ClusterNetworkPolicy
 metadata:
-  name: default-cluster-deny-external
+  name: strict-ns-isolation-except-system-ns2
 spec:
-  priority: 253
-  tier: baseline
   appliedTo:
   - namespaceSelector:
       matchExpressions:
@@ -27,8 +25,19 @@ spec:
         - vmware-system-tkg
         - external-namespace
         - vmware-system-tmc
-
-  ingress:
-    - action: Drop
   egress:
-    - action: Drop
+  - action: Pass
+    name: PassToSameNS
+    to:
+    - namespaces:
+        match: Self
+  - action: Drop
+    name: DropToAllOtherNS
+  ingress:
+  - action: Pass
+    from:
+    - namespaces:
+        match: Self
+    name: PassFromSameNS
+  priority: 100
+  tier: securityops
