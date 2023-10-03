@@ -1,0 +1,13 @@
+apiVersion: crd.antrea.io/v1alpha3
+kind: ClusterNetworkPolicy
+metadata:
+  name: allow-all-pods-from-cluster-b
+spec:
+  appliedTo:
+    podSelector: {}
+  rules:
+  - type: Allow
+    from:
+      clusterSelector:
+        matchLabels:
+          name: sv1-gitops-demo-02
