@@ -51,7 +51,7 @@ spec:
             secret:
               secretName: kubeadm-config
   schedule: '*/5 * * * *'
-  successfulJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 1
   suspend: false
 
 
