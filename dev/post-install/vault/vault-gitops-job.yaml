@@ -1,42 +1,57 @@
 ---
-apiVersion: batch/v1 
-kind: Job 
-metadata:   
-  name: vault-gitops-job 
-  namespace: external-secrets  
-  labels:     
-spec:   
-  template:     
-    metadata:       
-      name: vault-gitops      
-    spec:       
-      restartPolicy: OnFailure
-      containers:
-      - args:
-        env:
-        - name: VAULT_ADDR
-          value: https://vault.dev.e2open.com
-        command:
-        -   /bin/k8s-vault-register.sh
-        image: artifactory.dev.e2open.com/dcops-docker-repo/vault-gitops:0.2
-        imagePullPolicy: Always
-        name: vault-gitops
-        volumeMounts:
-        - mountPath: /data/clusterconfig
-          name: clusterconfig
-          readOnly: true
-      dnsPolicy: ClusterFirst
-      imagePullSecrets:
-      - name: regcred
-      securityContext:
-        fsGroup: 1000
-        runAsGroup: 1000
-        runAsNonRoot: true
-        runAsUser: 100
-      serviceAccount: vault-auth
-      serviceAccountName: vault-auth
-      terminationGracePeriodSeconds: 60
-      volumes:
-      - name: clusterconfig
-        secret:
-          secretName: kubeadm-config
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: vault-registration
+  namespace: external-secrets
+spec:
+  concurrencyPolicy: Allow
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - args:
+            env:
+            - name: VAULT_ADDR
+              value: https://vault.dev.e2open.com
+            name: vault-registration
+            image: artifactory.dev.e2open.com/dcops-docker-repo/vault-gitops:0.4
+            imagePullPolicy: Always
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            command: 
+            - sh 
+            - /bin/k8s-vault-register.sh
+            volumeMounts:
+            - mountPath: /data/clusterconfig
+              name: clusterconfig
+          dnsPolicy: ClusterFirst
+          imagePullSecrets:
+          - name: regcred
+          restartPolicy: OnFailure
+          schedulerName: default-scheduler
+          securityContext:
+            fsGroup: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            supplementalGroups:
+            - 1
+          serviceAccount: vault-auth
+          serviceAccountName: vault-auth
+          terminationGracePeriodSeconds: 30
+          volumes:
+          - name: clusterconfig
+            secret:
+              secretName: kubeadm-config
+  schedule: '*/5 * * * *'
+  successfulJobsHistoryLimit: 3
+  suspend: false
+
+
