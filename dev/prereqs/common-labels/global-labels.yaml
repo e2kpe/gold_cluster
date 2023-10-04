@@ -1,0 +1,22 @@
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: global-labels
+labels:
+ environment: production
+ app: my-app
+ team: dev-team
+ project: my-project
+ owner: john-doe
+ ci-account: dummy
+ ci-department: dummy
+ ci-e2customer: dummy
+ ci-env: dev
+ ci-hubid: dummy
+ ci-servicetier: dummy
+ ci-solution: dummy
+ ns-validation: dummy
+ resourcequota: default
+fieldSpecs:
+- path: metadata/labels
+  create: true
