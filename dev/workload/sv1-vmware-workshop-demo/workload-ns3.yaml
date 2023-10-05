@@ -1,0 +1,81 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: workload-ns3
+  labels:
+    app: my-app
+    ci-account: dummy
+    ci-department: dummy
+    ci-e2customer: dummy
+    ci-env: dev
+    ci-hubid: dummy
+    ci-servicetier: dummy
+    ci-solution: dummy
+    environment: production
+    owner: john-doe
+    project: my-project
+    team: dev-team
+    ns-category: provisioning
+    resourcequota: default
+
+
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-auth
+  namespace: workload-ns3
+secrets:
+- name: vault-auth-token
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-auth-token
+  namespace: workload-ns3
+  annotations:
+    kubernetes.io/service-account.name: vault-auth
+type: kubernetes.io/service-account-token
+
+---
+apiVersion: v1
+items:
+- apiVersion: external-secrets.io/v1beta1
+  kind: SecretStore
+  metadata:
+    name: vault
+    namespace: workload-ns3
+  spec:
+    provider:
+      vault:
+        auth:
+          kubernetes:
+            mountPath: ${cluster_name}
+            role: workload-ns3
+            serviceAccountRef:
+              name: vault-auth
+        caProvider:
+          key: vault-ca.crt
+          name: vault-ca
+          namespace: kube-public
+          type: ConfigMap
+        path:  ${cluster_name}
+        server: https://vault.dev.e2open.com
+        version: v2
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+---
+apiVersion: secretgen.carvel.dev/v1alpha1
+kind: SecretImport
+metadata:
+  labels:
+    kustomize.toolkit.fluxcd.io/name: tanzu-packages-secret-importer
+    kustomize.toolkit.fluxcd.io/namespace: tanzu-continuousdelivery-resources
+  name: regcred
+  namespace: workload-ns3
+spec:
+  fromNamespace: default

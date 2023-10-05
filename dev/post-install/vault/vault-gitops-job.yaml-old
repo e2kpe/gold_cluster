@@ -1,0 +1,42 @@
+---
+apiVersion: batch/v1 
+kind: Job 
+metadata:   
+  name: vault-gitops-job 
+  namespace: external-secrets  
+  labels:     
+spec:   
+  template:     
+    metadata:       
+      name: vault-gitops      
+    spec:       
+      restartPolicy: OnFailure
+      containers:
+      - args:
+        env:
+        - name: VAULT_ADDR
+          value: https://vault.dev.e2open.com
+        command:
+        -   /bin/k8s-vault-register.sh
+        image: artifactory.dev.e2open.com/dcops-docker-repo/vault-gitops:0.2
+        imagePullPolicy: Always
+        name: vault-gitops
+        volumeMounts:
+        - mountPath: /data/clusterconfig
+          name: clusterconfig
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: regcred
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 100
+      serviceAccount: vault-auth
+      serviceAccountName: vault-auth
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - name: clusterconfig
+        secret:
+          secretName: kubeadm-config
