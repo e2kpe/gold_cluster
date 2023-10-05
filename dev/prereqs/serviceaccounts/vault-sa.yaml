@@ -100,3 +100,18 @@ metadata:
   name: vault-ca
   namespace: kube-public
 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: role-namespace-view-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: namespace-view
+subjects:
+- kind: ServiceAccount
+  name: vault-auth
+  namespace: external-secrets
+
