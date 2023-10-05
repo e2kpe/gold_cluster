@@ -25,3 +25,6 @@ subjects:
 - kind: ServiceAccount
   name: podinfo-ingress-nginx
   namespace: ingress-nginx
+- kind: ServiceAccount
+  name: podinfo-ingress-nginx-admission
+  namespace: ingress-nginx
