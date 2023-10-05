@@ -15,7 +15,7 @@ labels:
  ci-hubid: dummy
  ci-servicetier: dummy
  ci-solution: dummy
- ns-validation: infra
+ ns-category: infra
  resourcequota: default
 fieldSpecs:
 - path: metadata/labels
