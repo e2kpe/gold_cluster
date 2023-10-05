@@ -4,13 +4,22 @@ kind: Namespace
 metadata:
   name: sv1-gitops-demo-02-ns-demo
   labels:
-    ci-account: test
-    ci-department: ci-e2customer
-    ci-e2customer: ci-env
-    ci-env: ci-hubid
-    ci-hubid: ci-servicetier
-    ci-servicetier: test
-    ci-solution: test
+    app: my-app
+    ci-account: dummy
+    ci-department: dummy
+    ci-e2customer: dummy
+    ci-env: dev
+    ci-hubid: dummy
+    ci-servicetier: dummy
+    ci-solution: dummy
+    environment: production
+    ns-category: workload
+    owner: john-doe
+    project: my-project
+    resourcequota: default
+    team: dev-team
+
+
 --- 
 
 ---
